@@ -70,15 +70,15 @@
           <div class="text-wrapper-16">working in</div>
           <div class="citybox">
             <div class="overlap-11">
-              <div class="city-box" />
-              <div class="current-location">
-                <img
-                  class="img"
-                  alt="Icon location pin"
-                  src="https://c.animaapp.com/DNPXNzSQ/img/---icon--location-pin-@2x.png"
-                />
+              <!-- Bind the input field to searchCity -->
+              <input type="text" v-model="searchCity" @input="filterCities" class="text-wrapper-17" placeholder="Type a city..." />
+              
+              <!-- Dropdown for city selection -->
+              <div v-if="filteredCities.length" class="dropdown">
+                <div v-for="city in filteredCities" :key="city.name" class="dropdown-item" @click="selectCity(city.name)">
+                  {{ city.name }}
+                </div>
               </div>
-              <div class="text-wrapper-17">Belfast, NI</div>
             </div>
           </div>
           <p class="text-wrapper-18">I want to find work experience in</p>
@@ -92,16 +92,53 @@
     </div>
   </div>
 </template>
-
 <script>
+import { db } from "./firebaseconfig";
+import { collection, getDocs, query, where } from 'firebase/firestore';
+
 export default {
   name: "RightPanel",
+  data() {
+    return {
+      cities: [],
+      searchCity: '',
+      selectedCity: '',
+      filteredCities: []
+    };
+  },
+  created() {
+    this.fetchCities();
+  },
+  methods: {
+    async fetchCities() {
+      try {
+        const citiesRef = collection(db, 'Cities');
+        const querySnapshot = await getDocs(citiesRef);
+        this.cities = querySnapshot.docs.map(doc => doc.data());
+      } catch (error) {
+        console.error("Error fetching cities:", error);
+      }
+    },
+    filterCities() {
+      if (this.searchCity.length > 0) {
+        this.filteredCities = this.cities.filter(city =>
+          city.name.toLowerCase().startsWith(this.searchCity.toLowerCase())
+        );
+      } else {
+        this.filteredCities = [];
+      }
+    },
+    selectCity(cityName) {
+      this.selectedCity = cityName; // Update the selected city
+      this.searchCity = cityName; // Update the searchCity to reflect the selected city in the input field
+      this.filteredCities = []; // Clear the dropdown
+    }
+  }
 };
 </script>
-
 <style>
 .right-panel {
-  background-color: #1c009033;
+  background-color: #101010b1;
   border: 3px solid;
   border-color: #ffffff;
   border-radius: 30px;
@@ -133,6 +170,39 @@ export default {
   width: 1346px;
 }
 
+.city-input {
+  /* Add gradient styling similar to .text-wrapper-17 */
+  background: linear-gradient(180deg, rgb(29, 0, 146) 0%, rgb(25, 236, 239) 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  padding: 10px;
+  font-size: 20px;
+}
+
+
+.dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  z-index: 100;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
 .right-panel .map-graphic {
   height: 895px;
   left: 0;
@@ -159,7 +229,7 @@ export default {
 }
 
 .right-panel .overlap-7 {
-  background-color: #ffffff;
+  background-color: #161616;
   height: 288px;
   position: relative;
   width: 1342px;
@@ -182,7 +252,7 @@ export default {
 }
 
 .right-panel .div-wrapper {
-  background-color: #19eaef;
+  background-color: #2d3030;
   border-radius: 20px;
    
   height: 61px;
@@ -191,7 +261,7 @@ export default {
 }
 
 .right-panel .text-wrapper-8 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 25px;
   font-weight: 600;
@@ -201,12 +271,12 @@ export default {
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 0;
+  top: 15px;
   width: 213px;
 }
 
 .right-panel .text-wrapper-9 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 18px;
   font-weight: 600;
@@ -271,7 +341,7 @@ export default {
 }
 
 .right-panel .sentence-box-2 {
-  background-color: #fffafacc;
+  background-color: #161616;
   border-radius: 20px;
    
   height: 168px;
@@ -346,7 +416,7 @@ export default {
 }
 
 .right-panel .text-wrapper-12 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 25px;
   font-weight: 400;
@@ -411,7 +481,7 @@ export default {
 }
 
 .right-panel .text-wrapper-14 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 25px;
   font-weight: 400;
@@ -462,7 +532,7 @@ export default {
 }
 
 .right-panel .text-wrapper-16 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 25px;
   font-weight: 400;
@@ -476,11 +546,11 @@ export default {
 }
 
 .right-panel .citybox {
-  height: 68px;
-  left: 435px;
-  position: absolute;
-  top: 2px;
-  width: 293px;
+    height: 68px;
+    left: 476px;
+    position: absolute;
+    top: -7px;
+    width: 293px;
 }
 
 .right-panel .overlap-11 {
@@ -537,10 +607,12 @@ export default {
   text-fill-color: transparent;
   top: 16px;
   width: 207px;
+  border-color: white;
+  border-radius: 30px;
 }
 
 .right-panel .text-wrapper-18 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 25px;
   font-weight: 400;
@@ -562,7 +634,7 @@ export default {
 }
 
 .right-panel .overlap-12 {
-  background-color: #19eaef;
+  background-color: #2d3030;
   border-radius: 20px;
    
   height: 168px;

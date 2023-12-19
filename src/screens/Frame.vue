@@ -1,8 +1,8 @@
 <template>
   <div class="frame">
     <div class="div-2">
-      <Profile />
-      <RightPanel />
+      <Profile class="profile" />
+      <RightPanel class="rightPanel" />
       <img
         class="skill-kids-logo"
         alt="Skill kids logo"
@@ -15,33 +15,24 @@
 <script>
 import Profile from "./Frame/sections/Profile.vue";
 import RightPanel from "./Frame/sections/RightPanel.vue";
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCMyTUTICWgHAFYLeTD9Chsn5HaTulkMCk",
-  authDomain: "skillkids-8a974.firebaseapp.com",
-  projectId: "skillkids-8a974",
-  storageBucket: "skillkids-8a974.appspot.com",
-  messagingSenderId: "625511086481",
-  appId: "1:625511086481:web:170b37485a37e915af8230",
-  measurementId: "G-HBHNKFSDKF"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 export default {
   name: "Frame",
   components: {
     Profile,
     RightPanel,
+
   },
+  data(){
+    return{
+      show: false,
+    }
+  },
+  methods: {
+    showProfile(){
+      this.show = !this.show;
+    }
+  }
 };
 </script>
 
@@ -61,7 +52,7 @@ html{
 }
 
 .frame .div-2 {
-  background: linear-gradient(180deg, rgb(4, 153, 255) 0%, rgb(25, 237, 238) 100%);
+  background: linear-gradient(180deg, rgb(0, 61, 102) 0%, rgb(7, 62, 62) 100%);
   background-color: rgba(255, 255, 255, 1);
   height: 1440px;
   position: relative;
@@ -70,11 +61,21 @@ html{
 }
 
 .frame .skill-kids-logo {
-  height: 129px;
-  left: 0;
-  object-fit: cover;
+    height: 129px;
+    left: 83px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    top: 12px;
+    width: 181px;
+    transform: scale(0.8);
+}
+.frame .profile{
+  position: relative;
+  top: 10%;
+}
+.frame .rightPanel{
   position: absolute;
-  top: 8px;
-  width: 181px;
+  top: 10%;
 }
 </style>

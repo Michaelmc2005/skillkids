@@ -112,7 +112,7 @@ export default {
 
 <style>
 .profile {
-  background-color: #1c009033;
+  background-color: #101010b1;
   border: 3px solid;
   border-color: #ffffff;
   border-radius: 30px;
@@ -130,13 +130,15 @@ export default {
 }
 
 .profile .ribbon {
-  background-color: #183862;
-  border-radius: 30px;
-  height: 1165px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 494px;
+    background-color: #161616;
+    border-radius: 30px;
+    height: 1165px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 494px;
+    border: 3px solid;
+    border-color: #ffffff;
 }
 
 .profile .skills {
@@ -148,7 +150,7 @@ export default {
 }
 
 .profile .overlap-group {
-  background-color: #ffffff;
+  background-color: #2d3030;
   border-radius: 30px;
   height: 69px;
   position: relative;
@@ -156,7 +158,7 @@ export default {
 }
 
 .profile .text-wrapper {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 25px;
   font-weight: 700;
@@ -193,7 +195,7 @@ export default {
 }
 
 .profile .work-experience-2 {
-  background-color: #ffffff;
+  background-color: #2d3030;
   border-radius: 30px;
   height: 69px;
   left: 2px;
@@ -231,7 +233,7 @@ export default {
 }
 
 .profile .background-circle {
-  background-color: #19ecef;
+  background-color: #0b6264;
   border: 10px solid;
   border-color: #ffffff;
   border-radius: 198.5px;
@@ -263,7 +265,7 @@ export default {
 
 .profile .profile-pic-white {
   border: 3px solid;
-  border-color: #000000;
+  border-color: #ffffff;
   border-radius: 32px/33px;
   height: 66px;
   left: 2px;
@@ -313,7 +315,7 @@ export default {
 }
 
 .profile .panel-2 {
-  background-color: #ffffffcc;
+  background-color: #2d3030;
   border-radius: 5px;
   height: 809px;
   left: 1px;
@@ -339,11 +341,11 @@ export default {
 }
 
 .profile .overlap-group-2 {
-  background-color: #ffffff;
-  border-radius: 5px;
-  height: 141px;
-  position: relative;
-  width: 140px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 141px;
+    position: relative;
+    width: 140px;
 }
 
 .profile .redstrip {
@@ -357,17 +359,17 @@ export default {
 }
 
 .profile .element-APR {
-  color: #000000;
-  font-family: "Inter", Helvetica;
-  font-size: 30px;
-  font-weight: 700;
-  height: 72px;
-  left: 33px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 46px;
+    color: #2d3030;
+    font-family: "Inter", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    height: 72px;
+    left: 33px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 46px;
 }
 
 .profile .overlap-wrapper {
@@ -379,7 +381,7 @@ export default {
 }
 
 .profile .element-FEB {
-  color: #000000;
+  color: #2d3030;
   font-family: "Inter", Helvetica;
   font-size: 30px;
   font-weight: 700;
@@ -401,7 +403,7 @@ export default {
 }
 
 .profile .element-NOV {
-  color: #000000;
+  color: #2d3030;
   font-family: "Inter", Helvetica;
   font-size: 30px;
   font-weight: 700;
@@ -424,7 +426,7 @@ export default {
 }
 
 .profile .text-wrapper-4 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 35px;
   font-weight: 700;
@@ -455,7 +457,7 @@ export default {
 }
 
 .profile .p {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 14px;
   font-weight: 400;
@@ -498,7 +500,7 @@ export default {
 }
 
 .profile .text-wrapper-5 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 40px;
   font-weight: 700;
@@ -635,7 +637,7 @@ export default {
 }
 
 .profile .text-wrapper-7 {
-  color: #000000;
+  color: #ffffff;
   font-family: "Inter", Helvetica;
   font-size: 40px;
   font-weight: 700;
